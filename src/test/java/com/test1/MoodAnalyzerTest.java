@@ -59,4 +59,17 @@ public class MoodAnalyzerTest {
     }
     catch (MoodAnalyserException e) { }
   }
+
+  @Test
+  public void givenEmptyMood_shouldReturnException() {
+  try
+  {
+    MoodAnalyzer moodAnalyzer = new MoodAnalyzer();
+    Mood mood = moodAnalyzer.analyzeHappyMood("null");
+  }
+  catch (MoodAnalyserException e)
+  {
+    Assert.assertEquals(MoodAnalyserException.ExceptionType.INVALID_MOOD, e.type);
+  }
+  }
 }
